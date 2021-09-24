@@ -1,0 +1,9 @@
+<form [formGroup]="form">
+  <app-required-text formControlName="textControl"></app-required-text>
+  <app-address-composite-cva
+    formControlName="addressControl"
+  ></app-address-composite-cva>
+</form>
+
+<p>Form:</p>
+<pre>{{ form.value | json }}</pre>
