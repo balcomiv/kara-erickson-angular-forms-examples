@@ -1,9 +1,13 @@
-<form [formGroup]="form">
-  <app-required-text formControlName="textControl"></app-required-text>
-  <app-address-composite-cva
-    formControlName="addressControl"
-  ></app-address-composite-cva>
-</form>
+<div class="wrapper">
+  <form [formGroup]="form">
+    <app-required-text formControlName="textControl"></app-required-text>
+    <app-address-composite-cva
+      formControlName="addressControl"
+    ></app-address-composite-cva>
+  </form>
 
-<p>Form:</p>
-<pre>{{ form.value | json }}</pre>
+  <p>Form:</p>
+  <pre>{{ form.value | json }}</pre>
+</div>
+
+<app-reactive-sub-form></app-reactive-sub-form>

@@ -1,16 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-sub-form',
   template: `
-    <form>
-      works
+    <form [formGroup]="form">
+      <app-reactive-sub-form-address></app-reactive-sub-form-address>
     </form>
   `,
-  styles: [],
+  styles: [
+    `
+    :host {
+      display: block;
+      border: 1px solid green;
+      margin: 15px;
+      padding: 15px;
+    }
+  `,
+  ],
 })
-export class ReactiveSubFormComponent implements OnInit {
-  constructor() {}
+export class ReactiveSubFormAddressComponent implements OnInit {
+  form = this.formBuilder.group({});
+
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {}
 }
