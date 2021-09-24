@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  ControlContainer,
+  FormBuilder,
+  FormGroup,
+  FormGroupDirective,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-sub-form',

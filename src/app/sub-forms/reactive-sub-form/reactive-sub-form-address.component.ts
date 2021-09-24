@@ -13,6 +13,9 @@ import {
       <input formControlName="street">
       <input formControlName="city">
     </div>
+
+    <p>Form:</p>
+    <pre>{{ form.value | json }}</pre>
   `,
   styles: [
     `
@@ -33,6 +36,11 @@ export class ReactiveSubFormComponent implements OnInit {
   form: FormGroup;
 
   constructor(parent: FormGroupDirective) {
+    if (!parent) {
+      throw new Error('What?');
+    }
+
+    console.log('parent: ', parent.value);
     this.form = parent.form;
   }
 
@@ -40,9 +48,11 @@ export class ReactiveSubFormComponent implements OnInit {
     this.form.addControl(
       'address',
       new FormGroup({
-        street: new FormControl(),
-        city: new FormControl(),
+        street: new FormControl('my street'),
+        city: new FormControl('my city'),
       })
     );
+
+    console.log('form value: ', JSON.stringify(this.form.value));
   }
 }
