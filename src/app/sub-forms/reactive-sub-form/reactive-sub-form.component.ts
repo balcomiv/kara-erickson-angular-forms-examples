@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-sub-form',
@@ -19,10 +19,6 @@ import { FormBuilder } from '@angular/forms';
   `,
   ],
 })
-export class ReactiveSubFormAddressComponent implements OnInit {
-  form = this.formBuilder.group({});
-
-  constructor(private formBuilder: FormBuilder) {}
-
-  ngOnInit() {}
+export class ReactiveSubFormAddressComponent {
+  form = new FormGroup({});
 }

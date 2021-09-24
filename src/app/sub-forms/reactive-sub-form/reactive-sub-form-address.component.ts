@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
   ControlContainer,
-  FormBuilder,
+  FormControl,
+  FormGroup,
   FormGroupDirective,
 } from '@angular/forms';
 
@@ -17,6 +18,7 @@ import {
     `
     input: {
       display: block;
+      border: 3px solid red;
     }
   `,
   ],
@@ -28,9 +30,19 @@ import {
   ],
 })
 export class ReactiveSubFormComponent implements OnInit {
-  form = this.formBuilder.group({});
+  form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(parent: FormGroupDirective) {
+    this.form = parent.form;
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form.addControl(
+      'address',
+      new FormGroup({
+        street: new FormControl(),
+        city: new FormControl(),
+      })
+    );
+  }
 }
