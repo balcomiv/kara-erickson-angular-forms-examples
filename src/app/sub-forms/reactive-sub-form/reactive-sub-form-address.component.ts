@@ -33,18 +33,19 @@ import {
   ],
 })
 export class ReactiveSubFormComponent implements OnInit {
+  formGroupDirective: FormGroupDirective;
   form: FormGroup;
 
   constructor(parent: FormGroupDirective) {
-    if (!parent) {
-      throw new Error('What?');
-    }
-
-    console.log('parent: ', parent.value);
-    this.form = parent.form;
+    this.formGroupDirective = parent;
   }
 
   ngOnInit() {
+    this.form = this.formGroupDirective.form;
+
+    /*
+      FormGroupDirective.form is set through an input property, so it won't be set yet in the constructor of the nested form component. If you save the directive instead and call this.formGroupDirective.form in your hook, it should work as intended.
+    */
     this.form.addControl(
       'address',
       new FormGroup({
@@ -52,7 +53,5 @@ export class ReactiveSubFormComponent implements OnInit {
         city: new FormControl('my city'),
       })
     );
-
-    console.log('form value: ', JSON.stringify(this.form.value));
   }
 }

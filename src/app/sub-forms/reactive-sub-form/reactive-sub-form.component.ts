@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   ControlContainer,
   FormBuilder,
+  FormControl,
   FormGroup,
   FormGroupDirective,
 } from '@angular/forms';
@@ -25,5 +26,7 @@ import {
   ],
 })
 export class ReactiveSubFormAddressComponent {
-  form = new FormGroup({});
+  form = new FormGroup({
+    testControl: new FormControl(),
+  });
 }
