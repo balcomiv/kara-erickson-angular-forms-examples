@@ -26,7 +26,5 @@ import {
   ],
 })
 export class ReactiveSubFormAddressComponent {
-  form = new FormGroup({
-    testControl: new FormControl(),
-  });
+  form = new FormGroup({});
 }
